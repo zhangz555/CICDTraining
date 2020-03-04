@@ -5,8 +5,8 @@ before_install:
 script:
   - ./mvnw clean install
 notifications:
-        email:
-                recipients:
-                - zhangz555@gmail.com
-        on_success: always
-        on_failure: always
+  email:
+    recipients:
+      secure: "Q3EM9uQ7XXlDd6uE0WrtY2g9pXuawScm0xgwttRIYP/aMPHFkjPiFrCj/sJo3di6Z1OXUpwxmptVx8DHurhxKKmIIyGTgQNlwcJenIwHfbiVtDFbhqFLZGwadJKKHhxW0J2V3BZGgGjzHj/QnSc/Jayd0Jw1j/V5Bj/n/OB6r5AroiXhrNAcYCqKQil3flaA4KARMcz7RGjKAtJd7p8poq5vWc/ZxBzX/kfMt72pyqvTiAFIHmpC/VjbfIR7zrE8Qg4h7Ye7kJSX/GU1trXF02Sa/Cxz80aEDopaMSJPVDrG5/1MEUV1uWE+342rycb2Q9LcxA6Z+YOm3aNrtUeFqjYXYI5N7ahqJryQTZoDgq9Srq042LmGN7U/C7dxD0ykljw2yMXne97ysQfHTYlBrZ/bWN+dlg9gSDDzPF5PONmdlbEkXHeQd8uSMj3y3I6I6s0P3pz0k6JnMD7Sh0hYXxCLWC1qrqPLIb3wRSehOQJtmULJ9FczNYlpzdbMNLX3dIoko4YJ6ujFzjzBHsZ/OivjasM9kV+YZ1KSoq29Mi7pTW/xvZQdBsdjkiWy1mUe/hluObOrippVO+1+t3k2+N1RWoz9G9DWIUMds/NyQeTj/lOLqMUyjnRGeQiio64VSyT9PkP23TCZPxI08VdCHcSU8/QYJOkp6vjiA70XI0t6Q="
+
+  on_failure: always
