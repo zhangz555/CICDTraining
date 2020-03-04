@@ -1,7 +1,9 @@
 language: java
-jdk: openjdk8
-before_install: 
-  - chmod +x mvnw
-script: 
-  - ./mvnw clean install
 
+jdk: openjdk11
+
+before_install:
+  - chmod +x mvnw
+
+script:
+  - ./mvnw clean install
