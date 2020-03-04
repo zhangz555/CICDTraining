@@ -2,10 +2,13 @@ language: java
 jdk: openjdk11
 before_install:
 
-    openssl aes-256-cbc -K $encrypted_f898719e42e8_key -iv $encrypted_f898719e42e8_iv -in zhankey.enc -out zhankey -d
+- openssl aes-256-cbc -K $encrypted_f898719e42e8_key -iv $encrypted_f898719e42e8_iv -in zhankey.enc -out zhankey -d
+- chmod +x mvnw
+- eval "$(ssh-agent -s)"
+- chmod 600 zhankey
+- ssh-add zhankey
+- echo -e "Host ${DEPLOY_HOST}\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 
-
-  - chmod +x mvnw
 addons:
   sonarcloud:
     organization: zhangz555
@@ -15,6 +18,21 @@ addons:
     
 script:
   - ./mvnw clean install sonar:sonar -Dsonar.projectKey=zhangz555_CICDTraining
+
+deploy:
+  - provider: script
+    skip-cleanup: true
+    script: rsync -r --quiet --delete-after ${TRAVIS_BUILD_DIR}/target/cicd-example-*.jar ${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_DIRECTORY}    
+    on:
+      branch: master
+
+  - provider: script
+    skip-cleanup: true
+    script: sh ${TRAVIS_BUILD_DIR}/remote_deploy.sh
+    on:
+      branch: master
+
+
 notifications:
   email:
     recipients:
